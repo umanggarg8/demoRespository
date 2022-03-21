@@ -1,0 +1,42 @@
+<template>
+    <article class="slds-card" style="padding:20px"> 
+    
+    <p style="color:blueviolet;font-size:24px">Custom Reusable Lookup Demo - LWC</p>
+    
+    <!--Custom Lookup with Pre-Populate Value for User Object-->
+    <c-lwc-custom-lookup icon-name="standard:user"
+                         s-object-api-name="user"
+                         label="Owner [Pre-Populate Demo]"
+                         onlookupupdate={lookupRecord}
+                         default-record-id='0052y000001PmqDAAS'
+                         placeholder="type here..."></c-lwc-custom-lookup>
+   <br/>
+   <!--Custom Lookup without Pre-Populate Value for account Object-->
+    <c-lwc-custom-lookup icon-name="standard:account"
+                         s-object-api-name="account"
+                         label="My Fev Account"
+                         onlookupupdate={lookupRecord}
+                         placeholder="Search Account here..."></c-lwc-custom-lookup>
+     </article>  
+    <!--<lightning-card title="Multi-lookup Component">
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item size="6" padding="around-small">
+                Selected Contact Id's: {selectedConIds}
+                <c-multi-select-picklist options={cons} place-holder="Select Contacts..." 
+                				onoptionchange={handleContactChange}></c-multi-select-picklist>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card> -->
+    <lightning-card title="Multi-lookup Component">
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item size="6" padding="around-small">
+                Selected Opportunities Id's: {selectedOppsIds}
+                <c-multi-select-picklist if:true={showOppLookup} options={opps} place-holder="Select Opportunities..." 
+                				onoptionchange={handleOppsChange}></c-multi-select-picklist>
+                Selected Contacts Id's: {selectedConIds}
+                <c-multi-select-picklist if:true={showConLookup} options={cons} place-holder="Select Contacts..." 
+                				onoptionchange={handleContactChange}></c-multi-select-picklist>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>                 
+</template>
