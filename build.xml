@@ -1,6 +1,13 @@
 <project name="salesforce" default="deployall" basedir="." xmlns:sf="antlib:com.salesforce">
   <property file="build.properties"/>
   <property environment="env"/>
+
+     <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+        <classpath>
+            <pathelement location="../ant-salesforce.jar" />            
+        </classpath>
+    </taskdef>
+    
   <!-- Deploy the unpackaged set of metadata retrieved with retrieveUnpackaged and run tests in this organization’s namespace only -->
   <target name="deployall">
   <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" testlevel="NoTestRun" logtype="Detail" deployRoot="force-app"/>
